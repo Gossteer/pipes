@@ -68,6 +68,9 @@
                                     <span class="lnr lnr-cloud condition">
                                         <span class="temp">21<span class="deg">0</span><span class="temp-type">C</span></span>
                                     </span>
+                                    <span class="lnr lnr-cloud condition">
+                                        <span class="temp"><input id="example" type="text" /></span>
+                                    </span>
                                 </li>
                             </ul>
                         </div>

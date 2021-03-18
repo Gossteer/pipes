@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoreAdminController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Auth::routes();
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('store-admin', [StoreAdminController::class, 'index'])->name('store-admin.index');
+    Route::get('category-admin', [CategoryController::class, 'index'])->name('category-admin.index');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 	Route::get('/table-list', function () {

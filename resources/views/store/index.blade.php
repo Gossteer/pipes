@@ -7,6 +7,9 @@
     @push('style')
         <link href="{{ asset('material') }}/css/store-bootstrap.css" rel="stylesheet" />
     @endpush
+    @push('js')
+        <script>
+
+        </script>
+    @endpush
 @endsection
-
-
