@@ -35,6 +35,7 @@
 
 <div class="container">
 	<div class="row">
+        <div id="inline" data-date="01/05/2020"><input type="text" name="datepicker"></div>
         @foreach ($stores as $store)
             <div class="col-sm-6">
                 <div class="weather-card one">
@@ -69,7 +70,7 @@
                                         <span class="temp">21<span class="deg">0</span><span class="temp-type">C</span></span>
                                     </span>
                                     <span class="lnr lnr-cloud condition">
-                                        <span class="temp"><input id="example" type="text" /></span>
+                                        <span class="temp"></span>
                                     </span>
                                 </li>
                             </ul>
