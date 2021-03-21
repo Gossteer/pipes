@@ -10,7 +10,13 @@ class Recording extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date'
+        'date',
+        'status',
+        'comment_customer',
+        'comment_admin',
+        'date_recording',
+        'user_id',
+        'store_id'
     ];
 
     public function store()

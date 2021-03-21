@@ -34,8 +34,12 @@
 </div> --}}
 
 <div class="container">
+    @auth
+        @include('livewire.store-recording')
+        @error('store_id') <span class="text-danger">{{ $message }}</span>@enderror
+        @error('date_recording') <span class="text-danger">{{ $message }}</span>@enderror
+    @endauth
 	<div class="row">
-        <div id="inline" data-date="01/05/2020"><input type="text" name="datepicker"></div>
         @foreach ($stores as $store)
             <div class="col-sm-6">
                 <div class="weather-card one">
@@ -66,11 +70,17 @@
                                 </li>
                                 <li>
                                     <span class="date">{{ mb_strimwidth($store->description, 0, 100, "...")}}</span>
-                                    <span class="lnr lnr-cloud condition">
+                                    {{-- <span class="lnr lnr-cloud condition">
                                         <span class="temp">21<span class="deg">0</span><span class="temp-type">C</span></span>
-                                    </span>
-                                    <span class="lnr lnr-cloud condition">
-                                        <span class="temp"></span>
+                                    </span> --}}
+                                    <span class="lnr condition">
+                                        <span class="temp">
+                                            @auth
+                                                <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $store->id }})" class="btn btn-primary btn-sm">Записаться</button>
+                                            @else
+                                                <button title="Для записи необходимо авторизоваться" disabled class="btn btn-primary btn-sm">Записаться</button>
+                                            @endauth
+                                        </span>
                                     </span>
                                 </li>
                             </ul>
@@ -81,3 +91,8 @@
         @endforeach
 	</div>
 </div>
+
+@push('style')
+    <link href="{{ asset('material') }}/css/store-bootstrap.css" rel="stylesheet" />
+@endpush
+

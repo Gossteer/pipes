@@ -15,9 +15,13 @@ class CreateRecordingsTable extends Migration
     {
         Schema::create('recordings', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_recording');
+            $table->date('date_recording');
+            $table->tinyInteger('status')->default(0);
+            $table->text('comment_customer')->nullable();
+            $table->text('comment_admin')->nullable();
             $table->timestamps();
 
+            $table->foreignId('user_id')->constrained('users')->onDelete('CASCADE');
             $table->foreignId('store_id')->constrained('stores')->onDelete('CASCADE');
         });
     }

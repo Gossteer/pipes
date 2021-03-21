@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recording;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('store.index', ['stores' => Store::with('category')->get()]);
+        foreach (Recording::select('date_recording')->where('status', 1)->get()->toArray() as $value) {
+           $recording_dates[] = $value['date_recording'];
+        }
+        return view('store.index', ['stores' => Store::with('category')->get(), 'recording_dates' => $recording_dates]);
     }
 
     /**

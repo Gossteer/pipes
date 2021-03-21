@@ -27,4 +27,5 @@ class Store extends Model
     {
         return $this->hasMany(Recording::class);
     }
+
 }
