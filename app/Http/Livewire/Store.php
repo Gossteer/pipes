@@ -26,10 +26,6 @@ class Store extends Component
     {
         $this->updateMode = true;
         $this->store_id = $id;
-        // $user = User::where('id',$id)->first();
-        // $this->user_id = $id;
-        // $this->name = $user->name;
-        // $this->email = $user->email;
     }
 
     public function close()

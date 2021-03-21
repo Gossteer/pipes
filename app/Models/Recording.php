@@ -10,7 +10,6 @@ class Recording extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
         'status',
         'comment_customer',
         'comment_admin',
