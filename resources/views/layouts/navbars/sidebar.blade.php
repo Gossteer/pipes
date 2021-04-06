@@ -7,7 +7,7 @@
   -->
     <div class="logo">
         <a href="{{ route('/') }}" class="simple-text logo-normal">
-            {{ __('Creative Tim') }}
+            Трубы Стефана
         </a>
     </div>
     <div class="sidebar-wrapper">
