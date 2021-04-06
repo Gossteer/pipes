@@ -78,7 +78,7 @@
                                             @auth
                                                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $store->id }})" class="btn btn-primary btn-sm">Записаться</button>
                                             @else
-                                                <button title="Для записи необходимо авторизоваться" disabled class="btn btn-primary btn-sm">Записаться</button>
+                                                <a href="{{route('login')}}" style="color: white" title="Для записи необходимо авторизоваться" disabled class="btn btn-primary btn-sm">Записаться</a>
                                             @endauth
                                         </span>
                                     </span>
