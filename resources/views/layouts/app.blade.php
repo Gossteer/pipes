@@ -28,7 +28,7 @@
     </head>
     <body class="{{ $class ?? '' }}">
 
-        @if (request()->routeIs('admin.*'))
+        @if (request()->routeIs('admin.*') or request()->routeIs('profile.*'))
             @include('layouts.page_templates.auth')
         @else
             @include('layouts.page_templates.guest')

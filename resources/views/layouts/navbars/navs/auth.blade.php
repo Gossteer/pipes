@@ -53,7 +53,7 @@
             </p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}">{{ __('Profile') }}</a>
+            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
             {{-- <a class="dropdown-item" href="#">{{ __('Settings') }}</a> --}}
             <div class="dropdown-divider"></div>
             <form method="POST" action="{{ route('logout') }}" id="logout-form">

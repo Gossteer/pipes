@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RecordingsAdminController;
+use App\Http\Controllers\RecordingsCustomerController;
 use App\Http\Controllers\StoreAdminController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,7 @@ Auth::routes();
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('store-admin', [StoreAdminController::class, 'index'])->name('store-admin.index');
     Route::get('category-admin', [CategoryController::class, 'index'])->name('category-admin.index');
+    Route::get('recordings-admin', [RecordingsAdminController::class, 'index'])->name('recordings.admin');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 	Route::get('/table-list', function () {
@@ -59,7 +62,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 	})->name('upgrade');
 });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group( function () {
+Route::middleware(['auth'])->group( function () {
+    Route::get('recordings-customer', [RecordingsCustomerController::class, 'index'])->name('profile.recordings.customer');
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

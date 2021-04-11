@@ -124,7 +124,7 @@
                         <div class="collapse show" id="laravelExample">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.profile.edit') }}">
+                                    <a class="nav-link" href="{{ route('profile.edit') }}">
                                         <span class="sidebar-mini"> UP </span>
                                         <span class="sidebar-normal">{{ __('User profile') }} </span>
                                     </a>
@@ -239,7 +239,7 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item" href="{{ route('admin.profile.edit') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

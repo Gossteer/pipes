@@ -10,7 +10,7 @@ class Recording extends Model
     use HasFactory;
 
     protected $fillable = [
-        'status',
+        'status', // -1 отменено, 0 в ожидании, 1 выполняется, 2 выполнено
         'comment_customer',
         'comment_admin',
         'date_recording',
@@ -21,5 +21,10 @@ class Recording extends Model
     public function store()
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
