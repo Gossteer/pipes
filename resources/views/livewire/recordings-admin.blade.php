@@ -2,12 +2,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <div>
+                    @if (session()->has('message'))
+                        <div class="alert alert-warning">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Список товаров</h4>
                         <a style="cursor: pointer" wire:click="addHidden('addStore()','Добавить')"
                             class="card-category">Добавить</a>
                     </div>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -73,49 +81,14 @@
                                             </td>
                                             <td class="text-primary">
                                                 <a style="cursor: pointer"
-                                                    wire:click="getUpdate({{ $recording->id }})"
-                                                    class="card-category">Редактировать</a>
+                                                    wire:click="nextStep({{ $recording->id }})"
+                                                    class="card-category">Вперёд</a>
                                                 <a style="cursor: pointer"
-                                                    wire:click="deleteStore({{ $recording->id }})"
-                                                    class="card-category">Удалить</a>
+                                                    wire:click="backStep({{ $recording->id }})"
+                                                    class="card-category">Назад</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr style="display: {{ $addHidden ? 'none' : 'table-row' }}"
-                                        wire:key="{{ 'storeadd' }}">
-                                        <td>
-                                            {{ $recordings->count() }}
-                                        </td>
-                                        <td>
-                                            <input wire:model.defer="name" value="{{ $name }}" type="text">
-                                        </td>
-                                        <td>
-                                            <textarea wire:model.defer="description"
-                                                style="resize: vertical; width: 100%;">
-
-                                            </textarea>
-                                        </td>
-                                        {{-- <td>
-                                            <select name="" id="" wire:model.defer="category_id">
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </td> --}}
-                                        <td class="text-primary">
-                                            <input type="number" wire:model.defer="price">
-                                        </td>
-                                        <td class="text-primary">
-                                            <a style="cursor: pointer" wire:click="{{ $method_store }}"
-                                                class="card-category">
-                                                {{ $text_button }}
-                                            </a>
-                                            <a style="cursor: pointer" wire:click="addHidden()" class="card-category">
-                                                Закрыть
-                                            </a>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
