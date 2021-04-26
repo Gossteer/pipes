@@ -12,7 +12,7 @@ class RecordingStatus extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $phone_number, $message_form;
+    public $message_form;
     protected $email;
     /**
      * Create a new message instance.

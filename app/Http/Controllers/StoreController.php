@@ -18,7 +18,7 @@ class StoreController extends Controller
         foreach (Recording::select('date_recording')->where('status', 1)->get()->toArray() as $value) {
            $recording_dates[] = $value['date_recording'];
         }
-        return view('store.index', ['stores' => Store::with('category')->get(), 'recording_dates' => $recording_dates]);
+        return view('store.index', ['stores' => Store::with('category')->get(), 'recording_dates' => $recording_dates ?? []]);
     }
 
     /**
