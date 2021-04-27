@@ -12,37 +12,37 @@ class RecordingStatus extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message_form;
+    public string $status, $store_name, $store_description, $store_price, $date_recording;
     protected $email;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(int $status, string $email, Store $store)
+    public function __construct(int $status, string $email, Store $store, string $date_recording)
     {
         switch ($status) {
             case -1:
-                $this->message_form = "Ваша заявка отклонена";
+                $this->status = "отклонена";
                 break;
             case 0:
-                $this->message_form = "Ваша заявка в ожидании";
+                $this->status = "в ожидании";
                 break;
             case 1:
-                $this->message_form = "Ваша заявка выполняется";
+                $this->status = "выполняется";
                 break;
             case 2:
-                $this->message_form = "Ваша заявка выполнена";
+                $this->status = "выполнена";
                 break;
 
             default:
                 # code...
                 break;
         }
-        $this->message_form .= " Название заказа: {$store->name}; \n
-        Описание: {$store->description}; \n
-        Цена: {$store->price}&#8381";
-
+        $this->store_name = $store->name;
+        $this->store_description = $store->description;
+        $this->store_price = $store->price;
+        $this->date_recording = date('d.m.Y', strtotime($date_recording));
         $this->email = $email;
     }
 
@@ -53,8 +53,7 @@ class RecordingStatus extends Mailable
      */
     public function build()
     {
-        return $this->from($this->email)
-            ->subject('Форма обратной связи')
+        return $this->subject('Изменение статуса заявки')
             ->view('emails.feedback-form');
     }
 }

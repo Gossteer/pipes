@@ -29,8 +29,8 @@ class RecordingsAdmin extends Component
         $recording->save();
 
         Mail::to($recording->user->email)
-        ->cc(env('MAIL_FROM_ADDRESS'))
-        ->send(new RecordingStatus($recording->status, $recording->user->email, $recording->store));
+        // ->cc(env('MAIL_FROM_ADDRESS'))
+        ->send(new RecordingStatus($recording->status, $recording->user->email, $recording->store, $recording->date_recording));
     }
 
     public function backStep(int $recording_id)
@@ -47,7 +47,7 @@ class RecordingsAdmin extends Component
         $recording->save();
 
         Mail::to($recording->user->email)
-        ->cc(env('MAIL_FROM_ADDRESS'))
-        ->send(new RecordingStatus($recording->status, $recording->user->email, $recording->store));
+        // ->cc(env('MAIL_FROM_ADDRESS'))
+        ->send(new RecordingStatus($recording->status, $recording->user->email, $recording->store, $recording->date_recording));
     }
 }
