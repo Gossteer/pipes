@@ -16,11 +16,12 @@ class CategoryAdmin extends Component
         return view('livewire.category-admin', ['categories' => $this->categories]);
     }
 
-    public function addHidden(string $method_store, string $text_button, bool $addHidden = null)
+    public function addHidden(string $method_store = null, string $text_button = null, bool $addHidden = null, string $name = null)
     {
         $this->method_store = $method_store;
         $this->text_button = $text_button;
         $this->addHidden = $addHidden ?? !$this->addHidden;
+        $this->name = $name;
     }
 
     public function addStore()
@@ -46,7 +47,7 @@ class CategoryAdmin extends Component
 
         $this->name = $categories->name;
 
-        $this->addHidden("updateStore($categories->id)",'Изменить',false);
+        $this->addHidden("updateStore($categories->id)",'Изменить',false, $this->name);
     }
 
     public function updateStore($id)

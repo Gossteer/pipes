@@ -17,8 +17,9 @@ class StoreAdmin extends Component
         return view('livewire.store-admin', ['stores' => $this->stores]);
     }
 
-    public function addHidden(string $method_store, string $text_button, bool $addHidden = null)
+    public function addHidden(string $method_store = null, string $text_button = null, bool $addHidden = null)
     {
+        $this->clear();
         $this->method_store = $method_store;
         $this->text_button = $text_button;
         $this->addHidden = $addHidden ?? !$this->addHidden;
@@ -48,12 +49,14 @@ class StoreAdmin extends Component
     {
         $store = $this->stores->find($id);
 
+        $this->addHidden("updateStore($store->id)",'Изменить',false);
+
         $this->name = $store->name;
         $this->description = $store->description;
         $this->price = $store->price;
         $this->category_id = $store->category_id;
 
-        $this->addHidden("updateStore($store->id)",'Изменить',false);
+
     }
 
     public function updateStore($id)
